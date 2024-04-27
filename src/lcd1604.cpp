@@ -55,4 +55,5 @@ void drawI2cLcd1604(State &state) {
   for(uint8_t i =0; i< 16; i++) lcd->write(fillChar);
   lcd->setCursor(0, 1);
   for(uint8_t i =0; i< 16; i++) lcd->write(fillChar);
+  state.isDirty = false;
 }

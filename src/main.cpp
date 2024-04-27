@@ -4,6 +4,7 @@
 #include "lcd1604.h"
 #include "ssd1306.h"
 
+const uint8_t BTN_PIN = PB12;
 enum WorkMode
 {
   I2C_LCD1604,
@@ -32,6 +33,7 @@ void setup()
   Serial.begin(9600);
   delay(1500);
   Serial.println("Begin 1");
+  pinMode(BTN_PIN, INPUT_PULLUP);
   if (workMode == I2C_LCD1604)
   {
     prepareLcd1604();
@@ -59,7 +61,7 @@ void loop()
     drawI2cSSD1306(state);
   }
 
-  delay(100);
+  delay(10);
   while (Serial.available())
   {
     uint8_t ch = Serial.read();
@@ -71,5 +73,16 @@ void loop()
       Serial.println(state.selectedMode);
     }
     printMenu();
+  }
+  if (digitalRead(BTN_PIN) == 0) {
+    state.btnPressed = millis();
+  } else {
+    if (state.btnPressed != 0) {
+      state.selectedMode = state.selectedMode + 1;
+      if (state.selectedMode > 8)
+        state.selectedMode = 1;
+      state.isDirty = true;
+    }
+    state.btnPressed = 0;
   }
 }
