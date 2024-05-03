@@ -6,7 +6,10 @@
 	],
 	"settings": {
 		"files.associations": {
-			"*.nocode": "cpp"
+			"*.nocode": "cpp",
+			"array": "cpp",
+			"string": "cpp",
+			"string_view": "cpp"
 		}
 	}
 }

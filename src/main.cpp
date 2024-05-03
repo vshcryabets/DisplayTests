@@ -3,16 +3,19 @@
 #include "state.h"
 #include "lcd1604.h"
 #include "ssd1306.h"
+#include "test_tm1637.h"
 
 const uint8_t BTN_PIN = PB12;
 enum WorkMode
 {
   I2C_LCD1604,
   I2C_SSD1306_128x64,
-  I2C_SSD1306_128x32
+  I2C_SSD1306_128x32,
+  TM1637_7SEG,
+
 };
 
-uint8_t workMode = I2C_SSD1306_128x64;
+uint8_t workMode = TM1637_7SEG;
 State state;
 
 void printMenu()
@@ -45,6 +48,9 @@ void setup()
   else if (workMode == I2C_SSD1306_128x32)
   {
     prepareSSD1306(false);
+  } else if (workMode == TM1637_7SEG)
+  {
+    prepareTM1637(PB13, PB14);
   }
 
   printMenu();
@@ -59,6 +65,10 @@ void loop()
   else if (workMode == I2C_SSD1306_128x64)
   {
     drawI2cSSD1306(state);
+  } 
+  else if (workMode == TM1637_7SEG)
+  {
+    drawTM1637(state);
   }
 
   delay(10);
