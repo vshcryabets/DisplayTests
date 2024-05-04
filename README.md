@@ -8,6 +8,8 @@ I want to check different display modules and measure which current those module
 
 ## SSD1306 OLED 0.96 128x64
 
+Module supply voltage - 3.3v.
+
 |Test, no|Description|Current,uA|
 |--|--|--|
 |1|Blank screen|2047|
@@ -16,6 +18,8 @@ I want to check different display modules and measure which current those module
 |4|100% fill|19900|
 
 ## TM1636
+
+Module supply voltage - 3.3v.
 
 |Test, no|Brightness|Description|Current,uA/mA|
 |--|--|--|--|
