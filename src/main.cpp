@@ -50,7 +50,7 @@ void setup()
     prepareSSD1306(false);
   } else if (workMode == TM1637_7SEG)
   {
-    prepareTM1637(PB13, PB14);
+    prepareTM1637(PB13, PB14, state);
   }
 
   printMenu();
@@ -89,7 +89,7 @@ void loop()
   } else {
     if (state.btnPressed != 0) {
       state.selectedMode = state.selectedMode + 1;
-      if (state.selectedMode > 8)
+      if (state.selectedMode > state.maxMode)
         state.selectedMode = 1;
       state.isDirty = true;
     }
