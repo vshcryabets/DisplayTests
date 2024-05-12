@@ -5,6 +5,19 @@ I want to check different display modules and measure which current those module
 
 ## LCD1602 via the PCF8574 I2C IO extender
 
+Module supply voltage - 3.3v.
+
+|Test, no|Description|Current,mA|
+|--|--|--|
+|1|Blank screen|3.1|
+|2|Blank screen + backlight|8.8|
+|3|25% fill|3.1|
+|4|25% fill + backlight|8.8|
+|5|50% fill|3.1|
+|6|50% fill + backlight|8.8|
+|7|100% fill|3.1|
+|8|100% fill + backlight|8.8|
+
 ## LCD2004 via the PCF8574 I2C IO extender
 
 Module supply voltage - 3.3v.
@@ -19,6 +32,19 @@ Module supply voltage - 3.3v.
 |6|50% fill + backlight|13010|
 |7|100% fill|3024|
 |8|100% fill + backlight|12970|
+
+After removal of power led from PCF8574 module
+
+|Test, no|Description|Current,uA|
+|--|--|--|
+|1|Blank screen|1744|
+|2|Blank screen + backlight|11630|
+|3|25% fill|1698|
+|4|25% fill + backlight|11600|
+|5|50% fill|1690|
+|6|50% fill + backlight|11600|
+|7|100% fill|1621|
+|8|100% fill + backlight|11550|
 
 ## SSD1306 OLED 0.96 128x64
 
