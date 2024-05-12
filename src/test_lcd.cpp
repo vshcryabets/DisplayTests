@@ -21,7 +21,7 @@ void prepareLcd(uint8_t columns, uint8_t rows, State &state) {
   delay(1000);
   lcd->createChar(0, font + 6);
   lcd->createChar(1, font + 6 + 8);
-  lcd->createChar(2, font + 6 + 16);
+  lcd->createChar(2, font + 6 + 24);
   lcd->noBacklight();
   lcd->clear();
   state.displayWidth = columns;

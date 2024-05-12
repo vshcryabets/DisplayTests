@@ -5,6 +5,20 @@ I want to check different display modules and measure which current those module
 
 ## LCD1602 via the PCF8574 I2C IO extender
 
+## LCD2004 via the PCF8574 I2C IO extender
+
+Module supply voltage - 3.3v.
+
+|Test, no|Description|Current,uA|
+|--|--|--|
+|1|Blank screen|3142|
+|2|Blank screen + backlight|13070|
+|3|25% fill|3098|
+|4|25% fill + backlight|13030|
+|5|50% fill|3090|
+|6|50% fill + backlight|13010|
+|7|100% fill|3024|
+|8|100% fill + backlight|12970|
 
 ## SSD1306 OLED 0.96 128x64
 
@@ -44,9 +58,4 @@ Module supply voltage - 3.3v.
 |19|0x07|50% fill|13.3mA|
 |20|0x07|100% fill|25.9mA|
 
-0-level brightness is hard to see in bright lighting.
-Here is few samples of 0-level brightness:
-
-<img src="./img/tm1637_0_fill25.jpg">
-<img src="./img/tm1637_0_fill50.jpg">
-<img src="./img/tm1637_0_fill100.jpg">
+0x00-level brightness is hard to see in bright lighting.
