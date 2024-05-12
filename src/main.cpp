@@ -1,21 +1,22 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "state.h"
-#include "lcd1604.h"
+#include "test_lcd.h"
 #include "ssd1306.h"
 #include "test_tm1637.h"
 
 const uint8_t BTN_PIN = PB12;
 enum WorkMode
 {
-  I2C_LCD1604,
+  I2C_LCD1602,
+  I2C_LCD2004,
   I2C_SSD1306_128x64,
   I2C_SSD1306_128x32,
   TM1637_7SEG,
 
 };
 
-uint8_t workMode = TM1637_7SEG;
+uint8_t workMode = I2C_LCD2004;
 State state;
 
 void printMenu()
@@ -37,9 +38,13 @@ void setup()
   delay(1500);
   Serial.println("Begin 1");
   pinMode(BTN_PIN, INPUT_PULLUP);
-  if (workMode == I2C_LCD1604)
+  if (workMode == I2C_LCD1602)
   {
-    prepareLcd1604();
+    prepareLcd(16, 2, state);
+  }
+  else if (workMode == I2C_LCD2004)
+  {
+    prepareLcd(20, 4, state);
   }
   else if (workMode == I2C_SSD1306_128x64)
   {
@@ -58,9 +63,9 @@ void setup()
 
 void loop()
 {
-  if (workMode == I2C_LCD1604)
+  if (workMode == I2C_LCD1602 || workMode == I2C_LCD2004)
   {
-    drawI2cLcd1604(state);
+    drawI2cLcd1602(state);
   }
   else if (workMode == I2C_SSD1306_128x64)
   {
